@@ -37,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/under_header_main_page"
         android:textSize="20sp"
@@ -45,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/logInButtonGreeting"
         android:layout_width="305dp"
         android:layout_height="68dp"
         android:layout_marginTop="104dp"
@@ -62,31 +63,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
+        android:id="@+id/signInTextGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/sign"
+        android:textColor="@color/mainBlueColor"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/logInButtonGreeting"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
         android:clickable="false"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/new_here"
         android:textColor="#616161"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/materialButton"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="52dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/sign"
-        android:textColor="@color/mainBlueColor"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/materialButton"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/logInButtonGreeting"
+        app:layout_constraintVertical_bias="0.083" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
