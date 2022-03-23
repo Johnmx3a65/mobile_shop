@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Shop</string>
+    <string name="marketplace_logo">Logo</string>
+    <string name="market_name">Marketplace.</string>
+    <string name="under_header_main_page">The fashion buying app</string>
+    <string name="login">Login</string>
+    <string name="new_here">New around here?</string>
+    <string name="sign">Sign in</string>
+
 </resources>
