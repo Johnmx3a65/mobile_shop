@@ -6,4 +6,5 @@
     <string name="login">Login</string>
     <string name="new_here">New around here?</string>
     <string name="sign">Sign in</string>
+    <string name="forgot_pass">Forgot your password?</string>
 </resources>
