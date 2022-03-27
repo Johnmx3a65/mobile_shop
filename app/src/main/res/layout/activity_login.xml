@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/mainBgColor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
     tools:context=".LoginActivity">
 
     <com.google.android.material.button.MaterialButton
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.60" />
+        app:layout_constraintVertical_bias="0.503" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -39,21 +39,34 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="32dp"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/forgot_pass"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/logInButtonGreeting"
-        app:layout_constraintEnd_toEndOf="@+id/cardView" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/loginviasocial"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/googlelogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/login"
         android:textColor="@color/mainBlueColor"
@@ -61,28 +74,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="343dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="4dp"
-        app:cardBackgroundColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/email"
+        app:boxStrokeColor="@color/mainBlueColor"
+        app:hintTextColor="@color/mainBlueColor"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="343dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/password"
+        app:hintTextColor="@color/mainBlueColor"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="@color/mainBlueColor"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-    </androidx.cardview.widget.CardView>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="343dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageButton
+        android:id="@+id/googlelogin"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="92dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/bgbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/logInButtonGreeting"
+        app:srcCompat="@drawable/ic_googlebutton" />
+
+    <ImageButton
+        android:id="@+id/facebooklogin"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="92dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="53dp"
+        android:backgroundTint="@color/bgbutton"
+        app:layout_constraintEnd_toEndOf="@+id/logInButtonGreeting"
+        app:layout_constraintTop_toTopOf="@+id/googlelogin"
+        app:srcCompat="@drawable/ic_facebooklogin" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

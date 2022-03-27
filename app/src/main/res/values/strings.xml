@@ -7,4 +7,11 @@
     <string name="new_here">New around here?</string>
     <string name="sign">Sign in</string>
     <string name="forgot_pass">Forgot your password?</string>
+    <string name="name">Name</string>
+    <string name="username">Rezia Banks</string>
+    <string name="email">Email</string>
+    <string name="useremail">reziabanks@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="signviasocial">Sign up with social account</string>
+    <string name="loginviasocial">Log in with social account</string>
 </resources>
