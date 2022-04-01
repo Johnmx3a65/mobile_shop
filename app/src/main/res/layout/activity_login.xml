@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logInButtonGreeting"
+        android:id="@+id/logInButtonLogin"
         android:layout_width="305dp"
         android:layout_height="68dp"
         android:backgroundTint="@color/mainBlueColor"
@@ -45,7 +45,7 @@
         android:text="@string/forgot_pass"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/logInButtonGreeting"
+        app:layout_constraintBottom_toTopOf="@+id/logInButtonLogin"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2" />
 
     <TextView
@@ -127,7 +127,7 @@
         android:layout_marginBottom="80dp"
         android:backgroundTint="@color/bgbutton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/logInButtonGreeting"
+        app:layout_constraintStart_toStartOf="@+id/logInButtonLogin"
         app:srcCompat="@drawable/ic_googlebutton" />
 
     <ImageButton
@@ -137,7 +137,7 @@
         android:layout_height="63dp"
         android:layout_marginEnd="53dp"
         android:backgroundTint="@color/bgbutton"
-        app:layout_constraintEnd_toEndOf="@+id/logInButtonGreeting"
+        app:layout_constraintEnd_toEndOf="@+id/logInButtonLogin"
         app:layout_constraintTop_toTopOf="@+id/googlelogin"
         app:srcCompat="@drawable/ic_facebooklogin" />
 
