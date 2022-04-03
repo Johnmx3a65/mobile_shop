@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="mainBgColor">#F1F5FF</color>
-    <color name="mainBlueColor">#436EEE</color>
-    <color name="shadow">#4E4F72</color>
-    <color name="shadow2">#000000</color>
-    <color name="grey">#9B9B9B</color>
-    <color name="bgbutton">#00FFFFFF</color>
+
+    <!--BRAND-->
+    <color name="brand_dark_900">#78560C</color>
+    <color name="brand_dark_800">#926D14</color>
+    <color name="brand_dark_700">#B58D20</color>
+    <color name="brand_dark_600">#D8AE2E</color>
+    <color name="brand_default_500">#FCD240</color>
+    <color name="brand_light_400">#FDE06F</color>
+    <color name="brand_light_300">#FEE98C</color>
+    <color name="brand_light_200">#FEF3B2</color>
+    <color name="brand_light_100">#FEF9D8</color>
+
+    <!--BLACK-->
+    <color name="black_dark_900">#0C0507</color>
+    <color name="black_dark_800">#0F080A</color>
+    <color name="black_dark_700">#130D0E</color>
+    <color name="black_dark_600">#171314</color>
+    <color name="black_default_500">#1B1B1B</color>
+    <color name="black_light_400">#767676</color>
+    <color name="black_light_300">#BABABA</color>
+    <color name="black_light_200">#E8E8E8</color>
+    <color name="black_light_100">#F3F3F3</color>
+    <color name="black_white_0">#FFFFFF</color>
+
+    <!--SUCCESS-->
+    <color name="success_dark_900">#066161</color>
+    <color name="success_dark_800">#0A766C</color>
+    <color name="success_dark_700">#109279</color>
+    <color name="success_dark_600">#17AF83</color>
+    <color name="success_default_500">#20CC89</color>
+    <color name="success_light_400">#52E09B</color>
+    <color name="success_light_300">#76EFA8</color>
+    <color name="success_light_200">#A5F9BF</color>
+    <color name="success_light_100">#D1FCDA</color>
+
+    <!--ERROR-->
+    <color name="error_dark_900">#790506</color>
+    <color name="error_dark_800">#921209</color>
+    <color name="error_dark_700">#B6250F</color>
+    <color name="error_dark_600">#D93D16</color>
+    <color name="error_default_500">#FD5B1F</color>
+    <color name="error_light_400">#FD8F56</color>
+    <color name="error_light_300">#FEAF78</color>
+    <color name="error_light_200">#FED0A5</color>
+    <color name="error_light_100">#FEEAD2</color>
+
+    <!--INFORMATION-->
+    <color name="info_dark_900">#041C7A</color>
+    <color name="info_dark_800">#072993</color>
+    <color name="info_dark_700">#0B3BB7</color>
+    <color name="info_dark_600">#1050DB</color>
+    <color name="info_default_500">#1668FF</color>
+    <color name="info_light_400">#5094FF</color>
+    <color name="info_light_300">#73AEFF</color>
+    <color name="info_light_200">#A1CCFF</color>
+    <color name="info_light_100">#D0E7FF</color>
+
 </resources>
