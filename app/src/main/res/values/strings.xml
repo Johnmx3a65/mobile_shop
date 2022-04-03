@@ -14,4 +14,8 @@
     <string name="password">Password</string>
     <string name="signviasocial">Sign up with social account</string>
     <string name="loginviasocial">Log in with social account</string>
+    <string name="start">Започнете</string>
+    <string name="explore_bulgaria">Нека изследваме България</string>
+    <string name="under_explore">Нека разгледаме България с нас само с няколко щраквания</string>
+    
 </resources>
