@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Marketplace.</string>
+    <string name="app_name">Traver</string>
     <string name="marketplace_logo">Logo</string>
     <string name="market_name">Marketplace.</string>
     <string name="under_header_main_page">The fashion buying app</string>
@@ -15,7 +15,9 @@
     <string name="signviasocial">Sign up with social account</string>
     <string name="loginviasocial">Log in with social account</string>
     <string name="start">Започнете</string>
+    <string name="createAccount">Създай акаунт</string>
+    <string name="signIn">Влез</string>
     <string name="explore_bulgaria">Нека изследваме България</string>
     <string name="under_explore">Нека разгледаме България с нас само с няколко щраквания</string>
-    
+
 </resources>
