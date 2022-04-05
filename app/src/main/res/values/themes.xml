@@ -30,7 +30,7 @@
     </style>
     <style name="headline_700">
         <item name="fontFamily">@font/inter_semibold</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">28dp</item>
     </style>
     <style name="headline_600">
         <item name="fontFamily">@font/inter_semibold</item>
