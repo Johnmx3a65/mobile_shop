@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_white_0"
     tools:context=".LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginEmailInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/input_field"
         android:layout_width="343dp"
         android:layout_height="64dp"
         android:layout_marginBottom="469dp"
         android:hint="@string/email"
-        app:boxStrokeColor="@color/black_light_200"
-        app:hintTextColor="@color/black_light_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginEmailInput"
+            style="@style/input_text_field"
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -28,23 +29,25 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginPasswordInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/input_field"
         android:layout_width="343dp"
         android:layout_height="64dp"
         android:layout_marginTop="37dp"
         android:hint="@string/password"
-        app:boxStrokeColor="@color/black_light_200"
-        app:hintTextColor="@color/black_light_200"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black_light_400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginEmailInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginPasswordInput"
+            style="@style/input_text_field"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/loginCreateAccountBtn"
@@ -69,5 +72,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-4dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Remember me"
+        android:textColor="@color/black_light_400"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/loginPasswordInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInputLayout" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Forgot password"
+        android:textColor="@color/black_light_400"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginPasswordInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
