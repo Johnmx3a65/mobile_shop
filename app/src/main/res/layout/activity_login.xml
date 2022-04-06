@@ -48,7 +48,6 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <Button
         android:id="@+id/loginCreateAccountBtn"
         style="@style/second_button"
@@ -81,12 +80,12 @@
         android:fontFamily="@font/inter_medium"
         android:text="@string/remember_me"
         android:textColor="@color/black_light_400"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/loginPasswordInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/loginPasswordInputLayout" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/loginForgotPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
@@ -94,7 +93,7 @@
         android:fontFamily="@font/inter_medium"
         android:text="@string/forgot_pass"
         android:textColor="@color/black_light_400"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/loginPasswordInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/loginPasswordInputLayout" />
 

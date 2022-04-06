@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shop">
         <activity
-            android:name=".ForgotPasswordMail"
+            android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Greeting"
+            android:name=".GreetingActivity"
             android:exported="true"
             android:theme="@style/Theme.Shop.BackgroundImageStyle">
             <intent-filter>
