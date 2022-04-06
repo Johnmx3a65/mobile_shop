@@ -1,12 +1,15 @@
 package com.parovsky.shop;
 
+import static com.parovsky.shop.utils.Utils.showToast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
@@ -18,9 +21,10 @@ import cz.msebera.android.httpclient.Header;
 public class LoginActivity extends AppCompatActivity {
 
     private ProgressDialog prgDialog;
-    private TextInputEditText loginEmailInput;
-    private TextInputEditText loginPasswordInput;
+    private TextInputEditText emailInput;
+    private TextInputEditText passwordInput;
     private Button signInBtn;
+    private TextView forgotPasswordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +32,32 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         prgDialog = new ProgressDialog(this);
-        loginEmailInput = findViewById(R.id.loginEmailInput);
-        loginPasswordInput = findViewById(R.id.loginPasswordInput);
-        signInBtn = findViewById(R.id.loginSignInBtn);
+        emailInput = findViewById(R.id.loginEmailInput);
+        passwordInput = findViewById(R.id.loginPasswordInput);
 
+        forgotPasswordText = findViewById(R.id.loginForgotPasswordText);
+        forgotPasswordText.setOnClickListener(this::forgotPasswordOnClick);
+
+        signInBtn = findViewById(R.id.loginSignInBtn);
         signInBtn.setOnClickListener(this::signInOnClick);
     }
 
+    private void forgotPasswordOnClick(View view) {
+        startActivity(new Intent(this, ForgotPasswordActivity.class));
+    }
+
     private void signInOnClick(View view) {
-        String email = loginEmailInput.getText().toString();
-        String password = loginPasswordInput.getText().toString();
+        String email = emailInput.getText().toString();
+        String password = passwordInput.getText().toString();
 
         if(Utils.isNotNull(email) && Utils.isNotNull(password)) {
             if (Utils.validate(email)) {
                 invokeWS(email, password);
             }else {
-                Toast.makeText(this, "Моля вкарайте валиден имейл", Toast.LENGTH_LONG).show();
+                showToast(this, "Моля вкарайте валиден имейл");
             }
         }else {
-            Toast.makeText(this, "Моля попълнете всички полета", Toast.LENGTH_LONG).show();
+            showToast(this, "Моля попълнете всички полета");
         }
     }
 
@@ -59,20 +70,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
-                Toast.makeText(LoginActivity.this, "Успешно влизане", Toast.LENGTH_LONG).show();
+                showToast(LoginActivity.this, "Успешно влизане");
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 prgDialog.hide();
                 if (statusCode == 401) {
-                    Toast.makeText(LoginActivity.this, "Невалидни потребителски данни", Toast.LENGTH_LONG).show();
+                    showToast(LoginActivity.this, "Невалидни потребителски данни");
                 }else if (statusCode == 404) {
-                    Toast.makeText(LoginActivity.this, "Страницата не е намерена", Toast.LENGTH_LONG).show();
+                    showToast(LoginActivity.this, "Страницата не е намерена");
                 }else if (statusCode == 500) {
-                    Toast.makeText(LoginActivity.this, "Сървърна грешка", Toast.LENGTH_LONG).show();
+                    showToast(LoginActivity.this, "Сървърна грешка");
                 }else {
-                    Toast.makeText(LoginActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет", Toast.LENGTH_LONG).show();
+                    showToast(LoginActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
                 }
             }
         });

@@ -1,5 +1,9 @@
 package com.parovsky.shop.utils;
 
+import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,5 +34,9 @@ public class Utils {
      */
     public static boolean isNotNull(String txt){
         return txt != null && txt.trim().length() > 0;
+    }
+
+    public static void showToast(FragmentActivity activity, String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
     }
 }
