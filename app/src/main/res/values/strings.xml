@@ -23,5 +23,14 @@
     <string name="remember_me">Помни ме</string>
     <string name="input_your_email">Въведете своя поща</string>
     <string name="submit">Изпращане</string>
+    <string name="save">Спаси</string>
+    <string name="createNewPassword">Създайте нова парола</string>
+    <string name="NewPassword">Нова парола</string>
+    <string name="RepeatPassword">Повтори паролата</string>
+    <string name="PasswordRequire">Вашата парола трябва да включва поне едно число и да е дълга 6 или повече знака.</string>
+    <string name="FirstName">Име</string>
+    <string name="LastName">Фамилия</string>
+    <string name="CreateAccount">Създайте своя акаунт</string>
+    <string name="WhatIsYourName">Как се казваш?</string>
 
 </resources>
