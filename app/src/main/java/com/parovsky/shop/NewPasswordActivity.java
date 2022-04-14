@@ -3,11 +3,11 @@ package com.parovsky.shop;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class register_name extends AppCompatActivity {
+public class NewPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_name);
+        setContentView(R.layout.activity_new_password);
     }
 }

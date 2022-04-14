@@ -3,7 +3,7 @@ package com.parovsky.shop;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Verification extends AppCompatActivity {
+public class VerificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

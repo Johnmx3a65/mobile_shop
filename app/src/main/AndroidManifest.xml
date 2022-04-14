@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shop" >
         <activity
-            android:name=".NewPassword"
+            android:name=".NewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".register_name"
+            android:name=".RegisterNameActivity"
             android:exported="false" />
         <activity
-            android:name=".Verification"
+            android:name=".VerificationActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
