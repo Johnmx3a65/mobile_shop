@@ -38,5 +38,11 @@
     <string name="Verification">Верификация</string>
     <string name="timer">04:00</string>
     <string name="CodeReload">Изпращане на код за повторение чрез</string>
+    <string name="HelloUser">Hello, Ivan!</string>
+    <string name="WhereExploreToday">Къде искате да изследвате днес?</string>
+    <string name="ChooseCategory">Изберете категория</string>
+    <string name="SeeAll">Виж всички</string>
+    <string name="SearchDestination">Търсене на дестинация</string>
+    <string name="Beach">Плаж</string>
 
 </resources>
