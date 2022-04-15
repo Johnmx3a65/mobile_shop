@@ -32,5 +32,11 @@
     <string name="LastName">Фамилия</string>
     <string name="CreateAccount">Създайте своя акаунт</string>
     <string name="WhatIsYourName">Как се казваш?</string>
+    <string name="YourEmail">Твоя поща?</string>
+    <string name="createPassword">Създайте парола</string>
+    <string name="Password">Парола</string>
+    <string name="Verification">Верификация</string>
+    <string name="timer">04:00</string>
+    <string name="CodeReload">Изпращане на код за повторение чрез</string>
 
 </resources>
