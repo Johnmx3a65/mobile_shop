@@ -29,6 +29,7 @@
         <item name="boxCornerRadiusBottomStart">15dp</item>
         <item name="boxCornerRadiusTopEnd">15dp</item>
         <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="passwordToggleDrawable">@drawable/show_password_selector</item>
         <item name="fontFamily">@font/inter_regular</item>
         <item name="android:textSize">14dp</item>
         <item name="android:textColorHint">@color/black_light_400</item>
