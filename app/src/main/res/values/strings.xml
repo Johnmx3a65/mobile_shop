@@ -44,5 +44,9 @@
     <string name="SeeAll">Виж всички</string>
     <string name="SearchDestination">Търсене на дестинация</string>
     <string name="Beach">Плаж</string>
+    <string name="FavoritePlace">Любимо място</string>
+    <string name="Explore">Разгледайте</string>
+    <string name="Sofia">София</string>
+    <string name="Vitosha">Витоша</string>
 
 </resources>
