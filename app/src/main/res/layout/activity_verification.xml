@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/RegEmailBackImage"
+        android:id="@+id/verificationBackBtn"
         android:layout_width="20dp"
         android:layout_height="21dp"
         android:layout_marginStart="30dp"
@@ -26,12 +26,11 @@
         android:layout_marginTop="82dp"
         android:text="@string/Verification"
         android:textColor="@color/black_dark_900"
-        app:layout_constraintStart_toStartOf="@+id/pinView"
-        app:layout_constraintTop_toBottomOf="@+id/RegEmailBackImage" />
-
+        app:layout_constraintStart_toStartOf="@+id/verificationCodePinView"
+        app:layout_constraintTop_toBottomOf="@+id/verificationBackBtn" />
 
     <com.chaos.view.PinView
-        android:id="@+id/pinView"
+        android:id="@+id/verificationCodePinView"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +39,7 @@
         android:inputType="number"
         android:itemBackground="#00FFFFFF"
         android:textColor="@color/black_dark_900"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:cursorColor="@color/brand_default_500"
         app:itemHeight="56dp"
         app:itemRadius="15dp"
@@ -51,7 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lineColor="@color/black_light_200" />
-
 
     <TextView
         android:id="@+id/textView5"
@@ -65,7 +63,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/SaveNewPasswordBtn"
+        android:id="@+id/verificationSaveBtn"
         style="@style/main_button"
         android:layout_width="match_parent"
         android:layout_height="58dp"
@@ -77,8 +75,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -88,7 +84,7 @@
         android:progress="100"
         android:progressBackgroundTint="#00000000"
         android:progressTint="@color/black_dark_900"
-        app:layout_constraintBottom_toTopOf="@+id/SaveNewPasswordBtn"
+        app:layout_constraintBottom_toTopOf="@+id/verificationSaveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,8 +97,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/timer"
         android:textColor="@color/black_light_400"
-        app:layout_constraintEnd_toEndOf="@+id/pinView"
-        app:layout_constraintTop_toBottomOf="@+id/pinView" />
+        app:layout_constraintEnd_toEndOf="@+id/verificationCodePinView"
+        app:layout_constraintTop_toBottomOf="@+id/verificationCodePinView" />
 
     <TextView
         android:id="@+id/textView9"
@@ -112,7 +108,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/CodeReload"
         android:textColor="@color/black_light_400"
-        app:layout_constraintStart_toStartOf="@+id/pinView"
-        app:layout_constraintTop_toBottomOf="@+id/pinView" />
+        app:layout_constraintStart_toStartOf="@+id/verificationCodePinView"
+        app:layout_constraintTop_toBottomOf="@+id/verificationCodePinView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

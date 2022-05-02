@@ -66,11 +66,11 @@ public class LoginActivity extends AppCompatActivity {
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth(email, password);
-        client.get("https://traver.cfapps.eu10.hana.ondemand.com/user", new AsyncHttpResponseHandler() {
+        client.get("https://traver.cfapps.eu10.hana.ondemand.com/current-user", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
-                showToast(LoginActivity.this, "Успешно влизане");
+                startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
             }
 
             @Override
