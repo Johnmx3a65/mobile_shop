@@ -1,5 +1,6 @@
 package com.parovsky.shop;
 
+import static com.parovsky.shop.utils.Utils.CURRENT_USER;
 import static com.parovsky.shop.utils.Utils.showToast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,6 +20,7 @@ import com.parovsky.shop.adapter.CategoryAdapter;
 import com.parovsky.shop.adapter.LocationAdapter;
 import com.parovsky.shop.model.Category;
 import com.parovsky.shop.model.Location;
+import com.parovsky.shop.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +44,8 @@ public class HomePageActivity extends AppCompatActivity {
 
     private Gson gson;
 
+    private TextView greetingText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +54,20 @@ public class HomePageActivity extends AppCompatActivity {
         gson = new Gson();
 
         progressDialog = new ProgressDialog(this);
-        List<Category> categories = new LinkedList<>();
-        List<Location> locations = new LinkedList<>();
-        invokeWS(categories, locations);
+
+        Intent currentIntent = getIntent();
+        String userJson = currentIntent.getStringExtra(CURRENT_USER);
+        User currentUser = gson.fromJson(userJson, new TypeToken<User>() {}.getType());
+
+        greetingText = findViewById(R.id.homePageGreetingTextView);
+        greetingText.setText("Здравейте, " + currentUser.getName() + "!");
+
+        setLocationRecycler(currentUser.getFavoriteLocations());
+
+        invokeWS();
     }
 
-    private void invokeWS(List<Category> categories, List<Location> locations) {
+    private void invokeWS() {
         progressDialog.show();
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -64,8 +77,7 @@ public class HomePageActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 progressDialog.hide();
                 List<Category> fetchedCategories = gson.fromJson(new String(responseBody), new TypeToken<List<Category>>() {}.getType());
-                categories.addAll(fetchedCategories);
-                setCategoryRecycler(categories);
+                setCategoryRecycler(fetchedCategories);
             }
 
             @Override
@@ -82,31 +94,6 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
-
-        client.get("https://traver.cfapps.eu10.hana.ondemand.com/locations", new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                progressDialog.hide();
-                List<Location> fetchedLocations = gson.fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
-                locations.addAll(fetchedLocations);
-                setLocationRecycler(locations);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                progressDialog.hide();
-                if (statusCode == 401) {
-                    showToast(HomePageActivity.this, "Невалидни потребителски данни");
-                }else if (statusCode == 404) {
-                    showToast(HomePageActivity.this, "Страницата не е намерена");
-                }else if (statusCode == 500) {
-                    showToast(HomePageActivity.this, "Сървърна грешка");
-                }else {
-                    showToast(HomePageActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
-                }
-            }
-        });
-
 
     }
 
