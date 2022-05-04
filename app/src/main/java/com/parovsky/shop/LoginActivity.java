@@ -1,5 +1,6 @@
 package com.parovsky.shop;
 
+import static com.parovsky.shop.utils.Utils.CURRENT_USER;
 import static com.parovsky.shop.utils.Utils.showToast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.parovsky.shop.model.Category;
+import com.parovsky.shop.model.User;
 import com.parovsky.shop.utils.Utils;
+
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -25,11 +32,14 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText passwordInput;
     private Button signInBtn;
     private TextView forgotPasswordText;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        gson = new Gson();
 
         prgDialog = new ProgressDialog(this);
         emailInput = findViewById(R.id.loginEmailInput);
@@ -70,7 +80,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
-                startActivity(new Intent(LoginActivity.this, HomePageActivity.class));
+                Intent homePageIntent = new Intent(LoginActivity.this, HomePageActivity.class);
+                homePageIntent.putExtra(CURRENT_USER, new String(responseBody));
+                startActivity(homePageIntent);
             }
 
             @Override

@@ -15,6 +15,8 @@ public class Utils {
 
     public static final String EMAIL_EXTRA = "email";
 
+    public static final String CURRENT_USER = "current_user";
+
     /**
      * Проверяване на Email чрез Регулярен израз
      * @param email
