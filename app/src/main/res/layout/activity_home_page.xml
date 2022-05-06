@@ -132,26 +132,29 @@ tools:context=".HomePageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="89dp"
+            android:layout_marginBottom="-20dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="30dp"
+            app:strokeColor="@color/black_light_200"
+            app:strokeWidth="0.5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginStart="36dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginBottom="25dp">
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="36dp">
 
 
                 <ImageView
