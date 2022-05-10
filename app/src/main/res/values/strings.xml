@@ -56,5 +56,9 @@
     <string name="PhotoGallery">Фото галерия</string>
     <string name="Location">Местоположение</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="category">Категории</string>
+    <string name="WeFoundTrip">Намерихме 4 места в „Бали”</string>
+    <string name="Search">Търсене</string>
+    <string name="YourWishlist">Вашият списък с желания</string>
 
 </resources>
