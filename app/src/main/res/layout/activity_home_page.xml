@@ -71,18 +71,6 @@ tools:context=".HomePageActivity">
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/SeeAll"
-                android:textColor="@color/black_light_300"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                app:layout_constraintEnd_toEndOf="@+id/searchView"
-                app:layout_constraintTop_toTopOf="@+id/textView10" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecycler"
                 android:layout_width="match_parent"
@@ -106,23 +94,11 @@ tools:context=".HomePageActivity">
                 app:layout_constraintStart_toStartOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@+id/categoryRecycler" />
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/Explore"
-                android:textColor="@color/black_light_300"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                app:layout_constraintEnd_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView13" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/locationRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="246dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:clipToPadding="false"
                 android:paddingStart="32dp"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
@@ -138,29 +114,25 @@ tools:context=".HomePageActivity">
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="89dp"
-            android:layout_marginBottom="-20dp"
-            app:cardCornerRadius="20dp"
+            android:layout_width="205dp"
+            android:layout_height="68dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="38dp"
             app:cardElevation="30dp"
-            app:strokeColor="@color/black_light_200"
-            app:strokeWidth="0.5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="36dp">
+                android:layout_height="match_parent">
 
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -170,20 +142,13 @@ tools:context=".HomePageActivity">
                     android:id="@+id/imageView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
-                    app:layout_constraintStart_toEndOf="@+id/imageView6"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_wishlist" />
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="22dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_profile" />
+                    app:srcCompat="@drawable/ic_wishlist" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
