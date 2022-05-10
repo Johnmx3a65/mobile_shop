@@ -11,11 +11,25 @@ public class Utils {
     private static Pattern pattern;
     private static Matcher matcher;
 
+    //Email Pattern
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    //regex for checking password length 6 characters and at least one digit
+    private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})";
 
     public static final String EMAIL_EXTRA = "email";
 
-    public static final String CURRENT_USER = "current_user";
+    public static final String CURRENT_USER_EXTRA = "current_user";
+
+    public static final String USER_EXTRA = "user";
+
+    public static final String VERIFY_CODE_EXTRA = "user";
+
+    public static final String FIRST_NAME_EXTRA = "first_name";
+
+    public static final String LAST_NAME_EXTRA = "last_name";
+
+    public static final String PARENT_EXTRA = "parent";
 
     /**
      * Проверяване на Email чрез Регулярен израз
@@ -23,9 +37,24 @@ public class Utils {
      * @return връща true за валиден Email и false за невалиден
     Email
      */
-    public static boolean validate(String email) {
+    public static boolean validateEmail(String email) {
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    /**
+     * Проверяване на парола чрез Регулярен израз
+     * @param password
+     * @return връща true за валиден парола и false за невалиден
+     * Password
+     * */
+    public static boolean validatePassword(String password) {
+        //Compiling the regular expression
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        //Retrieving the matcher object
+        Matcher matcher = pattern.matcher(password);
+        //Checking the string for pattern match
         return matcher.matches();
     }
 

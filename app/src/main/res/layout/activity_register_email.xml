@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/RegEmailBackImage"
+        android:id="@+id/regEmailBackImage"
         android:layout_width="20dp"
         android:layout_height="21dp"
         android:layout_marginStart="30dp"
@@ -27,7 +27,7 @@
         android:textColor="@color/black_dark_900"
 
         app:layout_constraintStart_toStartOf="@+id/loginEmailInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/RegEmailBackImage" />
+        app:layout_constraintTop_toBottomOf="@+id/regEmailBackImage" />
 
     <TextView
         android:id="@+id/textView5"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginEmailInput"
+            android:id="@+id/regEmailInput"
             style="@style/input_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/SaveNewPasswordBtn"
+        android:id="@+id/regEmailSaveBtn"
         style="@style/main_button"
         android:layout_width="match_parent"
         android:layout_height="58dp"
@@ -82,7 +82,7 @@
         android:progress="50"
         android:progressBackgroundTint="#00000000"
         android:progressTint="@color/black_dark_900"
-        app:layout_constraintBottom_toTopOf="@+id/SaveNewPasswordBtn"
+        app:layout_constraintBottom_toTopOf="@+id/regEmailSaveBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />

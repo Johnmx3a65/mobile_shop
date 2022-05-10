@@ -1,10 +1,14 @@
 package com.parovsky.shop;
 
 import static com.parovsky.shop.utils.Utils.EMAIL_EXTRA;
+import static com.parovsky.shop.utils.Utils.PARENT_EXTRA;
+import static com.parovsky.shop.utils.Utils.USER_EXTRA;
+import static com.parovsky.shop.utils.Utils.VERIFY_CODE_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -70,28 +74,27 @@ public class VerificationActivity extends AppCompatActivity {
 
     private void invokeWS(String email) throws JSONException, UnsupportedEncodingException {
         prgDialog.show();
-        RequestParams params = new RequestParams();
-        params.put("email", email);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("mail", email);
+        jsonObject.put("verifyCode", pinView.getText().toString());
+        StringEntity entity = new StringEntity(jsonObject.toString());
+
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("https://traver.cfapps.eu10.hana.ondemand.com/user", params, new AsyncHttpResponseHandler() {
+        client.post(getApplicationContext(),"https://traver.cfapps.eu10.hana.ondemand.com/check-verification-code", entity, "application/json", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
-                try {
-                    JSONObject obj = new JSONObject(new String(responseBody));
-                    String code = obj.getString("verifyCode");
-                    if (code.equals(pinView.getText().toString())) {
-                        Bundle extras = new Bundle();
-                        extras.putString("user", obj.toString());
-                        Intent intent = new Intent(VerificationActivity.this, NewPasswordActivity.class);
-                        intent.putExtras(extras);
-                        startActivity(intent);
-                    }else {
-                        showToast(VerificationActivity.this, "Невалиден код");
-                    }
-                } catch (JSONException e) {
-                    showToast(VerificationActivity.this, "Сървърна грешка");
-                    e.printStackTrace();
+                String parent = getIntent().getStringExtra(PARENT_EXTRA);
+                if (parent != null && parent.equals("RegisterPasswordActivity")) {
+                    startActivity(new Intent(VerificationActivity.this, LoginActivity.class));
+                }else {
+                    Bundle extras = new Bundle();
+                    extras.putString(EMAIL_EXTRA, email);
+                    extras.putString(VERIFY_CODE_EXTRA, pinView.getText().toString());
+                    Intent intent = new Intent(VerificationActivity.this, NewPasswordActivity.class);
+                    intent.putExtras(extras);
+                    startActivity(intent);
                 }
             }
 
@@ -100,6 +103,8 @@ public class VerificationActivity extends AppCompatActivity {
                 prgDialog.hide();
                 if (statusCode == 401) {
                     showToast(VerificationActivity.this, "Невалидни потребителски данни");
+                } else if (statusCode == 409){
+                    showToast(VerificationActivity.this, "Невалиден код");
                 } else if (statusCode == 404) {
                     showToast(VerificationActivity.this, "Страницата не е намерена");
                 } else if (statusCode == 500) {
@@ -112,6 +117,6 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void backBtnOnClick(View view) {
-        startActivity(new Intent(VerificationActivity.this, getParent().getClass()));
+        finish();
     }
 }
