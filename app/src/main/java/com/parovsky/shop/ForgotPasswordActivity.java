@@ -3,7 +3,7 @@ package com.parovsky.shop;
 import static com.parovsky.shop.utils.Utils.EMAIL_EXTRA;
 import static com.parovsky.shop.utils.Utils.isNotNull;
 import static com.parovsky.shop.utils.Utils.showToast;
-import static com.parovsky.shop.utils.Utils.validate;
+import static com.parovsky.shop.utils.Utils.validateEmail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.parovsky.shop.utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,13 +49,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void backImageOnClick(View view) {
-        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     private void submitBtnOnClick(View view) {
         String email = emailInput.getText().toString();
         if(isNotNull(email)) {
-            if (validate(email)) {
+            if (validateEmail(email)) {
                 try {
                     invokeWS(email);
                 } catch (JSONException | UnsupportedEncodingException e) {

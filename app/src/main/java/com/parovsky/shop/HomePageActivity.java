@@ -1,6 +1,6 @@
 package com.parovsky.shop;
 
-import static com.parovsky.shop.utils.Utils.CURRENT_USER;
+import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,10 +22,6 @@ import com.parovsky.shop.model.Category;
 import com.parovsky.shop.model.Location;
 import com.parovsky.shop.model.User;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.LinkedList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -56,7 +52,7 @@ public class HomePageActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         Intent currentIntent = getIntent();
-        String userJson = currentIntent.getStringExtra(CURRENT_USER);
+        String userJson = currentIntent.getStringExtra(CURRENT_USER_EXTRA);
         User currentUser = gson.fromJson(userJson, new TypeToken<User>() {}.getType());
 
         greetingText = findViewById(R.id.homePageGreetingTextView);
