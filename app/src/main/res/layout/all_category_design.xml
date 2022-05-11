@@ -24,15 +24,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/allCategoriesLocationImage"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageBox"
                 android:layout_width="86dp"
                 android:layout_height="116dp"
                 android:layout_marginStart="16dp"
-                android:background="@drawable/mini"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/allCategoriesLocationImage"
+                    android:layout_width="167dp"
+                    android:layout_height="116dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/vitosha_full"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/allCategoryLocationName"
@@ -43,8 +52,8 @@
                 android:textColor="@color/black_dark_900"
                 android:text="@string/Vitosha"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/allCategoriesLocationImage"
-                app:layout_constraintTop_toTopOf="@+id/allCategoriesLocationImage" />
+                app:layout_constraintStart_toEndOf="@+id/imageBox"
+                app:layout_constraintTop_toTopOf="@+id/imageBox" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -52,7 +61,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="6dp"
-                app:layout_constraintStart_toEndOf="@+id/allCategoriesLocationImage"
+                app:layout_constraintStart_toEndOf="@+id/imageBox"
                 app:layout_constraintTop_toBottomOf="@+id/allCategoryLocationName"
                 app:srcCompat="@drawable/ic_location_grey" />
 
@@ -81,7 +90,7 @@
                 android:text="@string/PlaceDescription"
                 android:textColor="@color/black_light_400"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/allCategoriesLocationImage"
+                app:layout_constraintBottom_toBottomOf="@+id/imageBox"
                 app:layout_constraintStart_toStartOf="@+id/allCategoryLocationName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
