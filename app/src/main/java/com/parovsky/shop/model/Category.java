@@ -1,5 +1,7 @@
 package com.parovsky.shop.model;
 
+import java.util.List;
+
 public class Category {
 
     private Long id;
@@ -8,10 +10,13 @@ public class Category {
 
     private String picture;
 
-    public Category(Long id, String name, String picture) {
+    private List<Location> locations;
+
+    public Category(Long id, String name, String picture, List<Location> locations) {
         this.id = id;
         this.name = name;
         this.picture = picture;
+        this.locations = locations;
     }
 
     public Long getId() {
@@ -36,5 +41,13 @@ public class Category {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 }

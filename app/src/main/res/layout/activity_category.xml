@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaceDetail">
+    tools:context=".CategoryActivity">
 
     <!--Scrolling page-->
     <ScrollView
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <SearchView
+            <!--<SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -33,20 +33,21 @@
                 android:searchIcon="@drawable/ic_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categoryRecycler"
+                android:id="@+id/categoryListRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="84dp"
                 android:clipToPadding="false"
                 android:paddingStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryListLocationsRecycler"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -54,7 +55,7 @@
                 android:layout_marginBottom="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/categoryRecycler" />
+                app:layout_constraintTop_toBottomOf="@+id/categoryListRecycler" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -88,7 +89,7 @@
                 android:layout_marginEnd="20dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/categoriesBackImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +98,7 @@
                     app:srcCompat="@drawable/ic_arrow_back" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/locationName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_semibold"
@@ -106,7 +107,7 @@
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="@+id/categoriesBackImage"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

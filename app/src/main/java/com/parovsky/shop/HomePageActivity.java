@@ -1,16 +1,20 @@
 package com.parovsky.shop;
 
+import static com.parovsky.shop.SaveSharedPreference.getUserEmail;
+import static com.parovsky.shop.SaveSharedPreference.getUserPassword;
 import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
+import static com.parovsky.shop.utils.Utils.SEARCH_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -42,6 +46,14 @@ public class HomePageActivity extends AppCompatActivity {
 
     private TextView greetingText;
 
+    private SearchView searchView;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateLocations();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +64,62 @@ public class HomePageActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         Intent currentIntent = getIntent();
-        String userJson = currentIntent.getStringExtra(CURRENT_USER_EXTRA);
-        User currentUser = gson.fromJson(userJson, new TypeToken<User>() {}.getType());
+        Bundle currentBundle = currentIntent.getExtras();
+        String currentUserString = currentBundle.getString(CURRENT_USER_EXTRA);
+        User currentUser = gson.fromJson(currentUserString, new TypeToken<User>() {}.getType());
 
         greetingText = findViewById(R.id.homePageGreetingTextView);
         greetingText.setText("Здравейте, " + currentUser.getName() + "!");
 
+        searchView = findViewById(R.id.homeSearchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent searchIntent = new Intent(HomePageActivity.this, SearchActivity.class);
+                searchIntent.putExtra(SEARCH_EXTRA, s);
+                startActivity(searchIntent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
         setLocationRecycler(currentUser.getFavoriteLocations());
 
         invokeWS();
+    }
+
+    private void updateLocations() {
+        progressDialog.show();
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setBasicAuth(getUserEmail(this), getUserPassword(this));
+        client.get("https://traver.cfapps.eu10.hana.ondemand.com/locations/favorite", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                progressDialog.hide();
+                List<Location> locations = new Gson().fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
+                setLocationRecycler(locations);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                progressDialog.hide();
+                if (statusCode == 401) {
+                    showToast(HomePageActivity.this, "Невалидни потребителски данни");
+                }else if (statusCode == 404) {
+                    showToast(HomePageActivity.this, "Страницата не е намерена");
+                }else if (statusCode == 500) {
+                    showToast(HomePageActivity.this, "Сървърна грешка");
+                }else {
+                    showToast(HomePageActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
+                }
+            }
+        });
     }
 
     private void invokeWS() {
