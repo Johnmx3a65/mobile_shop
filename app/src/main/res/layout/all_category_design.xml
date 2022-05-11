@@ -29,11 +29,36 @@
                 android:layout_width="86dp"
                 android:layout_height="116dp"
                 android:layout_marginStart="16dp"
-                android:id="@+id/imageView10"
-                android:background="@drawable/mini"
+                android:id="@+id/imageBox"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="86dp"
+                    android:layout_height="116dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/imageView10"
+                        android:layout_width="167dp"
+                        android:layout_height="116dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/vitosha_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/textView18"
@@ -44,18 +69,8 @@
                 android:textColor="@color/black_dark_900"
                 android:text="@string/Vitosha"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toTopOf="@+id/imageView10" />
-
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_unliked_without_bg" />
+                app:layout_constraintStart_toEndOf="@+id/imageBox"
+                app:layout_constraintTop_toTopOf="@+id/imageBox" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -63,7 +78,7 @@
                 android:layout_height="16dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="6dp"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintStart_toEndOf="@+id/imageBox"
                 app:layout_constraintTop_toBottomOf="@+id/textView18"
                 app:srcCompat="@drawable/ic_location_grey" />
 
@@ -92,7 +107,7 @@
                 android:text="@string/PlaceDescription"
                 android:textColor="@color/black_light_400"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+                app:layout_constraintBottom_toBottomOf="@+id/imageBox"
                 app:layout_constraintStart_toStartOf="@+id/textView18" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
