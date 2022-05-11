@@ -58,7 +58,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
     private ImageView favoriteImage;
 
-    private LatLng locationCoordinates = new LatLng( -8.719266, 115.168640);
+    private LatLng locationCoordinates;
 
     private String locationTitle;
 
@@ -232,8 +232,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         googleMap.addMarker(new MarkerOptions().position(locationCoordinates).title(locationTitle));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(locationCoordinates));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationCoordinates, 15));
     }
 
     private void setPhotosRecycler(List<String> photoList) {

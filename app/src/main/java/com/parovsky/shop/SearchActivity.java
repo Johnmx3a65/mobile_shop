@@ -113,7 +113,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void setLocationRecycler(List<Location> locations) {
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
 
         locationRecycler = findViewById(R.id.searchLocationsRecycler);
         locationRecycler.setLayoutManager(layoutManager);
