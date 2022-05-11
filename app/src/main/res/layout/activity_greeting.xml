@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GreetingActivity">
+    android:layout_width="1080px"
+    android:layout_height="2338px"
+    android:layout_gravity="bottom"
+    tools:context=".GreetingActivity"
+    android:background="@drawable/bg_image_start_page">
 
     <Button
         android:id="@+id/greetingStartBtn"
