@@ -9,6 +9,8 @@ import static com.parovsky.shop.utils.Utils.showToast;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -48,6 +50,8 @@ public class HomePageActivity extends AppCompatActivity {
 
     private SearchView searchView;
 
+    private ImageView noContentImage;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -67,6 +71,8 @@ public class HomePageActivity extends AppCompatActivity {
         Bundle currentBundle = currentIntent.getExtras();
         String currentUserString = currentBundle.getString(CURRENT_USER_EXTRA);
         User currentUser = gson.fromJson(currentUserString, new TypeToken<User>() {}.getType());
+
+        noContentImage = findViewById(R.id.noContentImage);
 
         greetingText = findViewById(R.id.homePageGreetingTextView);
         greetingText.setText("Здравейте, " + currentUser.getName() + "!");
@@ -90,6 +96,11 @@ public class HomePageActivity extends AppCompatActivity {
 
         setLocationRecycler(currentUser.getFavoriteLocations());
 
+        if (currentUser.getFavoriteLocations().isEmpty()) {
+            noContentImage.setVisibility(View.VISIBLE);
+            locationRecycler.setVisibility(View.GONE);
+        }
+
         invokeWS();
     }
 
@@ -104,6 +115,14 @@ public class HomePageActivity extends AppCompatActivity {
                 progressDialog.hide();
                 List<Location> locations = new Gson().fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
                 setLocationRecycler(locations);
+
+                if (locations == null || locations.isEmpty()) {
+                    noContentImage.setVisibility(View.VISIBLE);
+                    locationRecycler.setVisibility(View.GONE);
+                }else {
+                    noContentImage.setVisibility(View.GONE);
+                    locationRecycler.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

@@ -2,26 +2,23 @@ package com.parovsky.shop;
 
 import static com.parovsky.shop.utils.Utils.EMAIL_EXTRA;
 import static com.parovsky.shop.utils.Utils.PARENT_EXTRA;
-import static com.parovsky.shop.utils.Utils.USER_EXTRA;
 import static com.parovsky.shop.utils.Utils.VERIFY_CODE_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.chaos.view.PinView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,12 +38,19 @@ public class VerificationActivity extends AppCompatActivity {
 
     private ImageView backBtn;
 
+    // 4 minutes
+    private static final long COUNTDOWN_TIME = 4 * 60 * 1000;
+    private TextView countDownText;
+    private long timeLeft = COUNTDOWN_TIME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
         prgDialog = new ProgressDialog(this);
+
+        countDownText = findViewById(R.id.verificationTimerText);
 
         pinView = findViewById(R.id.verificationCodePinView);
 
@@ -55,6 +59,67 @@ public class VerificationActivity extends AppCompatActivity {
 
         saveBtn = findViewById(R.id.verificationSaveBtn);
         saveBtn.setOnClickListener(this::saveBtnOnClick);
+
+        timerStart();
+    }
+
+    private void timerStart() {
+        CountDownTimer countDownTimer = new CountDownTimer(COUNTDOWN_TIME, 1000) {
+            @Override
+            public void onTick(long l) {
+                timeLeft = l;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+                try {
+                    sendVerificationCode();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    showToast(VerificationActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
+                }
+                timeLeft = COUNTDOWN_TIME;
+            }
+        }.start();
+    }
+
+    private void updateTimer() {
+        int minutes = (int) (timeLeft / 1000) / 60;
+        int seconds = (int) (timeLeft / 1000) % 60;
+
+        String timeLeftText = String.format("%02d:%02d", minutes, seconds);
+        countDownText.setText(timeLeftText);
+    }
+
+    private void sendVerificationCode() throws UnsupportedEncodingException, JSONException {
+        String email = getIntent().getStringExtra(EMAIL_EXTRA);
+        JSONObject jsonParams = new JSONObject();
+        jsonParams.put("mail", email);
+        StringEntity entity = new StringEntity(jsonParams.toString());
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post(VerificationActivity.this, "https://traver.cfapps.eu10.hana.ondemand.com/send-verification-code", entity, "application/json",  new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                showToast(VerificationActivity.this, "Изпратено е ново писмо за потвърждение");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                if (statusCode == 401) {
+                    showToast(VerificationActivity.this, "Невалидни потребителски данни");
+                }else if (statusCode == 404) {
+                    showToast(VerificationActivity.this, "Страницата не е намерена");
+                }else if (statusCode == 500) {
+                    showToast(VerificationActivity.this, "Сървърна грешка");
+                }else {
+                    showToast(VerificationActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
+                }
+            }
+        });
     }
 
     private void saveBtnOnClick(View view) {
