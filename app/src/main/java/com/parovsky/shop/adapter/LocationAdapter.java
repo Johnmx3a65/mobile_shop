@@ -12,7 +12,6 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -77,11 +76,10 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         BitmapDrawable drawable = new BitmapDrawable(context.getResources(), bitmap);
 
-        if (context instanceof HomePageActivity) {
-            holder.cardBackground.setBackground(drawable);
-        }else {
+        holder.cardBackground.setBackground(drawable);
+
+        if (!(context instanceof HomePageActivity)) {
             holder.locationDescription.setText(location.getDescription());
-            holder.locationImage.setImageDrawable(drawable);
         }
 
         holder.itemView.setOnClickListener(view -> {
@@ -107,8 +105,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
         private ConstraintLayout cardBackground;
 
-        private ImageView locationImage;
-
         public LocationViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -120,7 +116,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 locationName = itemView.findViewById(R.id.allCategoryLocationName);
                 locationSubtitle = itemView.findViewById(R.id.allCategoriesLocationSubtitle);
                 locationDescription = itemView.findViewById(R.id.allCategoriesLocationDescription);
-                locationImage = itemView.findViewById(R.id.allCategoriesLocationImage);
+                cardBackground = itemView.findViewById(R.id.allCategoriesLocationImage);
             }
         }
     }

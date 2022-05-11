@@ -1,8 +1,5 @@
 package com.parovsky.shop.model;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Location {
 
     private Long id;
@@ -15,12 +12,15 @@ public class Location {
 
     private String description;
 
-    public Location(Long id, String name, String picture, String subtitle, String description) {
+    private String coordinates;
+
+    public Location(Long id, String name, String picture, String subtitle, String description, String coordinates) {
         this.id = id;
         this.name = name;
         this.picture = picture;
         this.subtitle = subtitle;
         this.description = description;
+        this.coordinates = coordinates;
     }
 
     public Long getId() {
@@ -61,5 +61,13 @@ public class Location {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
     }
 }

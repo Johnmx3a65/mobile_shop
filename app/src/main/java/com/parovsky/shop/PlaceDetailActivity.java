@@ -32,6 +32,7 @@ import com.parovsky.shop.adapter.PhotoLibraryAdapter;
 import com.parovsky.shop.model.Location;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -76,6 +77,9 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
         String locationJSON = getIntent().getStringExtra(LOCATION_JSON_EXTRA);
         Location location = new Gson().fromJson(locationJSON, new TypeToken<Location>() {}.getType());
+
+        List<String> coordinates = Arrays.asList(location.getCoordinates().split(";"));
+        locationCoordinates = new LatLng(Double.parseDouble(coordinates.get(0)), Double.parseDouble(coordinates.get(1)));
 
         progressDialog = new ProgressDialog(this);
 
