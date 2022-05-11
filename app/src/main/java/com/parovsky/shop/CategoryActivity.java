@@ -43,6 +43,14 @@ public class CategoryActivity extends AppCompatActivity {
 
     private Gson gson;
 
+    public LocationAdapter getLocationAdapter() {
+        return locationAdapter;
+    }
+
+    public void setLocationAdapter(LocationAdapter locationAdapter) {
+        this.locationAdapter = locationAdapter;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

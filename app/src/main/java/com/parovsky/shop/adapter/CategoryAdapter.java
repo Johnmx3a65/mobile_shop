@@ -65,6 +65,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 Intent intent = new Intent(context, CategoryActivity.class);
                 intent.putExtra(CATEGORY_ID_EXTRA, categories.get(position).getId());
                 ((Activity) context).startActivityForResult(intent, 1);
+            }else {
+                ((Activity) context).getIntent().putExtra(CATEGORY_ID_EXTRA, categories.get(position).getId());
+                LocationAdapter locationAdapter = ((CategoryActivity) context).getLocationAdapter();
+                locationAdapter.setLocations(categories.get(position).getLocations());
+                locationAdapter.notifyDataSetChanged();
             }
         });
     }
