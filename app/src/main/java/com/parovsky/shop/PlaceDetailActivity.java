@@ -3,12 +3,6 @@ package com.parovsky.shop;
 import static com.parovsky.shop.utils.Utils.LOCATION_JSON_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +11,12 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -81,7 +81,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
         locationName = findViewById(R.id.locationNamePanel);
         locationNameCard = findViewById(R.id.locationNameCard);
-        locationSubtitle = findViewById(R.id.locationSubtitle);
+        locationSubtitle = findViewById(R.id.allCategoriesLocationSubtitle);
         textDescription = findViewById(R.id.textDescription);
         cardView = findViewById(R.id.cardBackground);
         backImage = findViewById(R.id.locationDescriptionBackImage);

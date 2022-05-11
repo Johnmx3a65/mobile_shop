@@ -1,6 +1,10 @@
 package com.parovsky.shop.adapter;
 
+import static com.parovsky.shop.utils.Utils.CATEGORY_ID_EXTRA;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -13,6 +17,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.parovsky.shop.CategoryActivity;
+import com.parovsky.shop.HomePageActivity;
 import com.parovsky.shop.R;
 import com.parovsky.shop.model.Category;
 
@@ -26,6 +32,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public CategoryAdapter(Context context, List<Category> categories) {
         this.context = context;
+        this.categories = categories;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
@@ -45,6 +59,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         byte[] decodedString = Base64.decode(cleanImage, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         holder.categoryPicture.setImageBitmap(decodedByte);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (context instanceof HomePageActivity) {
+                Intent intent = new Intent(context, CategoryActivity.class);
+                intent.putExtra(CATEGORY_ID_EXTRA, categories.get(position).getId());
+                ((Activity) context).startActivityForResult(intent, 1);
+            }
+        });
     }
 
     @Override

@@ -49,6 +49,8 @@ public class Utils {
 
     public static final String IS_FAVORITE_EXTRA = "is_favorite";
 
+    public static final String CATEGORY_ID_EXTRA = "category_id";
+
     /**
      * Проверяване на Email чрез Регулярен израз
      * @param email
