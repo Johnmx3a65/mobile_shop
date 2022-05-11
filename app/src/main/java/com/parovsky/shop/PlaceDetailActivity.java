@@ -58,7 +58,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
     private ImageView favoriteImage;
 
-    private LatLng locationCoordinates = new LatLng( -8.719266, 115.168640);
+    private LatLng locationCoordinates;
 
     private String locationTitle;
 
