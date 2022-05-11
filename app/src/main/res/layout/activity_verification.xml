@@ -90,7 +90,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/verificationTimerText"
         style="@style/body_text_100"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

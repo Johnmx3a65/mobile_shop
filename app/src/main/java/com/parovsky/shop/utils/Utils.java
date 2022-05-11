@@ -23,6 +23,8 @@ public class Utils {
 
     public static final String USER_EXTRA = "user";
 
+    public static final String USER_ID_EXTRA = "user_id";
+
     public static final String VERIFY_CODE_EXTRA = "user";
 
     public static final String FIRST_NAME_EXTRA = "first_name";
@@ -30,6 +32,26 @@ public class Utils {
     public static final String LAST_NAME_EXTRA = "last_name";
 
     public static final String PARENT_EXTRA = "parent";
+
+    public static final String LOCATION_NAME_EXTRA = "location_title";
+
+    public static final String LOCATION_SUBTITLE_EXTRA = "location_subtitle";
+
+    public static final String LOCATION_MAIN_IMAGE_EXTRA = "location_main_image";
+
+    public static final String LOCATION_IMAGES_EXTRA = "location_images";
+
+    public static final String LOCATION_DESCRIPTION_EXTRA = "location_description";
+
+    public static final String LOCATION_ID_EXTRA = "location_id";
+
+    public static final String LOCATION_JSON_EXTRA = "location_json";
+
+    public static final String IS_FAVORITE_EXTRA = "is_favorite";
+
+    public static final String CATEGORY_ID_EXTRA = "category_id";
+
+    public static final String SEARCH_EXTRA = "search";
 
     /**
      * Проверяване на Email чрез Регулярен израз

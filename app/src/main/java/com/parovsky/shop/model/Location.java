@@ -10,11 +10,17 @@ public class Location {
 
     private String picture;
 
-    public Location(Long id, String name, String picture, String subtitle) {
+    private String description;
+
+    private String coordinates;
+
+    public Location(Long id, String name, String picture, String subtitle, String description, String coordinates) {
         this.id = id;
         this.name = name;
         this.picture = picture;
         this.subtitle = subtitle;
+        this.description = description;
+        this.coordinates = coordinates;
     }
 
     public Long getId() {
@@ -47,5 +53,21 @@ public class Location {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
     }
 }

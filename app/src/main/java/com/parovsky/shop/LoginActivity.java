@@ -1,6 +1,7 @@
 package com.parovsky.shop;
 
 import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
+import static com.parovsky.shop.utils.Utils.USER_ID_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +14,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.parovsky.shop.model.User;
 import com.parovsky.shop.utils.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -79,9 +88,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
+                SaveSharedPreference.setUserEmail(LoginActivity.this, email);
+                SaveSharedPreference.setUserPassword(LoginActivity.this, password);
                 Intent homePageIntent = new Intent(LoginActivity.this, HomePageActivity.class);
-                homePageIntent.putExtra(CURRENT_USER_EXTRA, new String(responseBody));
-                startActivity(homePageIntent);
+                try {
+                    JSONObject jsonObject = new JSONObject(new String(responseBody));
+                    Bundle bundle = new Bundle();
+                    bundle.putString(CURRENT_USER_EXTRA, jsonObject.toString());
+                    homePageIntent.putExtras(bundle);
+                    startActivity(homePageIntent);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override

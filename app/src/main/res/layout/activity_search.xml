@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlaceDetail">
+    tools:context=".PlaceDetailActivity">
 
     <!--Scrolling page-->
     <ScrollView
@@ -36,11 +36,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/searchTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/WeFoundTrip"
                 android:textSize="18dp"
                 android:fontFamily="@font/inter_bold"
                 android:textColor="@color/black_dark_900"
@@ -48,6 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchLocationsRecycler"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -55,7 +55,7 @@
                 android:layout_marginBottom="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintTop_toBottomOf="@+id/searchTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_marginEnd="20dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/searchBackImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +98,7 @@
                     app:srcCompat="@drawable/ic_arrow_back" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/locationName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_semibold"
@@ -107,7 +107,7 @@
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="@+id/searchBackImage"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
