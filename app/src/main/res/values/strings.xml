@@ -21,7 +21,7 @@
     <string name="explore_bulgaria">Нека изследваме България</string>
     <string name="under_explore">Нека разгледаме България с нас само с няколко щраквания</string>
     <string name="remember_me">Помни ме</string>
-    <string name="input_your_email">Въведете своя поща</string>
+    <string name="input_your_email">Въведете своята поща</string>
     <string name="submit">Изпращане</string>
     <string name="save">Запази</string>
     <string name="createNewPassword">Създайте нова парола</string>
@@ -30,16 +30,16 @@
     <string name="PasswordRequire">Вашата парола трябва да започва с голяма буква, да включва поне едно число и да е дълга от 6 до 20 символа.</string>
     <string name="FirstName">Име</string>
     <string name="LastName">Фамилия</string>
-    <string name="CreateAccount">Създайте своя акаунт</string>
+    <string name="CreateAccount">Създайте свой акаунт</string>
     <string name="WhatIsYourName">Как се казваш?</string>
-    <string name="YourEmail">Твоя поща?</string>
+    <string name="YourEmail">А каква е твоята поща?</string>
     <string name="createPassword">Създайте парола</string>
     <string name="Password">Парола</string>
     <string name="Verification">Верификация</string>
     <string name="timer">04:00</string>
     <string name="CodeReload">Изпращане на код за повторение чрез</string>
     <string name="HelloUser">Hello, Ivan!</string>
-    <string name="WhereExploreToday">Къде искате да изследвате днес?</string>
+    <string name="WhereExploreToday">Къде искате да отидете днес?</string>
     <string name="ChooseCategory">Изберете категория</string>
     <string name="SeeAll">Виж всички</string>
     <string name="SearchDestination">Търсене на дестинация</string>
@@ -49,7 +49,7 @@
     <string name="Sofia">София</string>
     <string name="Vitosha">Витоша</string>
     <string name="KutaBeach">Kuta Beach</string>
-    <string name="AboutPlace">Относно мястото</string>
+    <string name="AboutPlace">Информация</string>
     <string name="PlaceDescription">Витоша е четвъртата по големина планина у нас. Намира се в Западна България , между Стара планина и Рило-Родопския масив. Оградена е от Софийска, Пернишка, Самоковска котловина, Плана и Люлин планина. Формата й е куполовидна, втора е по средна надморска височина и първа по посещаемост.
 
 <br>Най-високият й връх е Черни връх (2290м), следват Голям резен (2277м), Скопарник (2227м), Карачаир (2208м) и др. Характерни за планината са каменните реки, една от които е Златните мостове. Представляват големи струпвания на скални блокове- те са основна туристическа цел.</br></string>
