@@ -34,14 +34,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cardBackground"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="315dp"
+                    android:layout_height="220dp"
                     android:background="@drawable/vitosha_full"
                     android:orientation="horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="352dp"
+                        android:layout_height="246dp"
                         android:background="@drawable/shadow_overlay"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,8 +53,8 @@
                             android:id="@+id/imageView3"
                             android:layout_width="16dp"
                             android:layout_height="16dp"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginBottom="28dp"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginBottom="36dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:srcCompat="@drawable/ic_location" />
@@ -156,6 +156,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="40dp"
                 app:cardCornerRadius="20dp"
+                android:elevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView17"
                 app:layout_constraintTop_toBottomOf="@+id/textView17">

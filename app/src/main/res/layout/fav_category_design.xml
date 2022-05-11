@@ -21,10 +21,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardBackground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="352dp"
+            android:layout_height="246dp"
+            android:layout_gravity="center"
             android:orientation="horizontal"
-            android:background="@drawable/vitosha_mini">
+            android:background="@drawable/vitosha_full"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -80,8 +81,6 @@
                     android:text="@string/Vitosha"
                     app:layout_constraintBottom_toTopOf="@+id/imageView3"
                     app:layout_constraintStart_toStartOf="@+id/imageView3" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
