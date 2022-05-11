@@ -1,5 +1,6 @@
 package com.parovsky.shop;
 
+import static com.parovsky.shop.SaveSharedPreference.*;
 import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
 
@@ -52,8 +53,9 @@ public class HomePageActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         Intent currentIntent = getIntent();
-        String userJson = currentIntent.getStringExtra(CURRENT_USER_EXTRA);
-        User currentUser = gson.fromJson(userJson, new TypeToken<User>() {}.getType());
+        Bundle currentBundle = currentIntent.getExtras();
+        String currentUserString = currentBundle.getString(CURRENT_USER_EXTRA);
+        User currentUser = gson.fromJson(currentUserString, new TypeToken<User>() {}.getType());
 
         greetingText = findViewById(R.id.homePageGreetingTextView);
         greetingText.setText("Здравейте, " + currentUser.getName() + "!");
@@ -61,6 +63,42 @@ public class HomePageActivity extends AppCompatActivity {
         setLocationRecycler(currentUser.getFavoriteLocations());
 
         invokeWS();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        updateLocations();
+    }
+
+    private void updateLocations() {
+        progressDialog.show();
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setBasicAuth(getUserEmail(this), getUserPassword(this));
+        client.get("https://traver.cfapps.eu10.hana.ondemand.com/locations/favorite", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                progressDialog.hide();
+                List<Location> locations = new Gson().fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
+                setLocationRecycler(locations);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                progressDialog.hide();
+                if (statusCode == 401) {
+                    showToast(HomePageActivity.this, "Невалидни потребителски данни");
+                }else if (statusCode == 404) {
+                    showToast(HomePageActivity.this, "Страницата не е намерена");
+                }else if (statusCode == 500) {
+                    showToast(HomePageActivity.this, "Сървърна грешка");
+                }else {
+                    showToast(HomePageActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
+                }
+            }
+        });
     }
 
     private void invokeWS() {

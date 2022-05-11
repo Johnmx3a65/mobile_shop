@@ -29,6 +29,9 @@ public class User {
         this.favoriteLocations = favoriteLocations;
     }
 
+    public User() {
+    }
+
     public int getId() {
         return id;
     }
