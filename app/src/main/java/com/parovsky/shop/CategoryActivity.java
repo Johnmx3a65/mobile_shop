@@ -61,7 +61,11 @@ public class CategoryActivity extends AppCompatActivity {
         gson = new Gson();
 
         backImage = findViewById(R.id.categoriesBackImage);
-        backImage.setOnClickListener(v -> finish());
+
+        backImage.setOnClickListener(v -> {
+            setResult(1);
+            finish();
+        });
 
         setCategoryRecycler(new LinkedList<>());
         setLocationRecycler(new LinkedList<>());

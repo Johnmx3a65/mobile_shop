@@ -20,7 +20,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.parovsky.shop.CategoryActivity;
 import com.parovsky.shop.HomePageActivity;
 import com.parovsky.shop.PlaceDetailActivity;
 import com.parovsky.shop.R;
@@ -32,11 +31,14 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     private final Context context;
 
+    private final List<Location> allLocations;
+
     private List<Location> locations;
 
     public LocationAdapter(Context context, List<Location> locations) {
         this.context = context;
         this.locations = locations;
+        this.allLocations = locations;
     }
 
     public List<Location> getLocations() {
@@ -45,6 +47,10 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     public void setLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public List<Location> getAllLocations() {
+        return allLocations;
     }
 
     @NonNull
@@ -71,11 +77,11 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         BitmapDrawable drawable = new BitmapDrawable(context.getResources(), bitmap);
 
-        if (context instanceof CategoryActivity) {
+        if (context instanceof HomePageActivity) {
+            holder.cardBackground.setBackground(drawable);
+        }else {
             holder.locationDescription.setText(location.getDescription());
             holder.locationImage.setImageDrawable(drawable);
-        }else {
-            holder.cardBackground.setBackground(drawable);
         }
 
         holder.itemView.setOnClickListener(view -> {

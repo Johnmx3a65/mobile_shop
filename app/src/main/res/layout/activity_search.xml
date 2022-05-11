@@ -36,11 +36,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/searchTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/WeFoundTrip"
                 android:textSize="18dp"
                 android:fontFamily="@font/inter_bold"
                 android:textColor="@color/black_dark_900"
@@ -48,12 +47,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchLocationsRecycler"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintTop_toBottomOf="@+id/searchTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -87,7 +87,7 @@
                 android:layout_marginEnd="20dp">
 
                 <ImageView
-                    android:id="@+id/locationDescriptionBackImage"
+                    android:id="@+id/searchBackImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +105,7 @@
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/locationDescriptionBackImage"
+                    app:layout_constraintStart_toStartOf="@+id/searchBackImage"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

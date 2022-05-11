@@ -1,17 +1,20 @@
 package com.parovsky.shop;
 
-import static com.parovsky.shop.SaveSharedPreference.*;
+import static com.parovsky.shop.SaveSharedPreference.getUserEmail;
+import static com.parovsky.shop.SaveSharedPreference.getUserPassword;
 import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
+import static com.parovsky.shop.utils.Utils.SEARCH_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -43,6 +46,14 @@ public class HomePageActivity extends AppCompatActivity {
 
     private TextView greetingText;
 
+    private SearchView searchView;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateLocations();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,16 +71,26 @@ public class HomePageActivity extends AppCompatActivity {
         greetingText = findViewById(R.id.homePageGreetingTextView);
         greetingText.setText("Здравейте, " + currentUser.getName() + "!");
 
+        searchView = findViewById(R.id.homeSearchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent searchIntent = new Intent(HomePageActivity.this, SearchActivity.class);
+                searchIntent.putExtra(SEARCH_EXTRA, s);
+                startActivity(searchIntent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
         setLocationRecycler(currentUser.getFavoriteLocations());
 
         invokeWS();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        updateLocations();
     }
 
     private void updateLocations() {

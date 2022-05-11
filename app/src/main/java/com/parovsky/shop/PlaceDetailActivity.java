@@ -81,7 +81,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
         locationName = findViewById(R.id.locationNamePanel);
         locationNameCard = findViewById(R.id.locationNameCard);
-        locationSubtitle = findViewById(R.id.allCategoriesLocationSubtitle);
+        locationSubtitle = findViewById(R.id.locationSubtitle);
         textDescription = findViewById(R.id.textDescription);
         cardView = findViewById(R.id.cardBackground);
         backImage = findViewById(R.id.locationDescriptionBackImage);
@@ -97,10 +97,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
             changeFavoriteStatus(isFavorite, location.getId());
         });
 
-        backImage.setOnClickListener(v -> {
-            setResult(1);
-            finish();
-        });
+        backImage.setOnClickListener(v -> finish());
 
         locationName.setText(location.getName());
         locationTitle = location.getName();

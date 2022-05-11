@@ -51,6 +51,8 @@ public class Utils {
 
     public static final String CATEGORY_ID_EXTRA = "category_id";
 
+    public static final String SEARCH_EXTRA = "search";
+
     /**
      * Проверяване на Email чрез Регулярен израз
      * @param email
