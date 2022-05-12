@@ -96,7 +96,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
 
         favoriteImage.setOnClickListener(v -> {
             isFavorite = !isFavorite;
-            favoriteImage.setImageResource(isFavorite ? R.drawable.ic_heart : R.drawable.ic_unliked);
+            favoriteImage.setImageResource(isFavorite ? R.drawable.ic_heart : R.drawable.ic_unliked_without_bg);
 
             changeFavoriteStatus(isFavorite, location.getId());
         });
@@ -246,6 +246,6 @@ public class PlaceDetailActivity extends AppCompatActivity implements OnMapReady
     }
 
     private void setFavoriteState(){
-        favoriteImage.setImageResource(isFavorite ? R.drawable.ic_heart : R.drawable.ic_unliked);
+        favoriteImage.setImageResource(isFavorite ? R.drawable.ic_heart : R.drawable.ic_unliked_without_bg);
     }
 }

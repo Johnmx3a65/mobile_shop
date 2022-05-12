@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Shop" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Shop" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/brand_default_500</item>
         <item name="colorPrimaryVariant">@color/brand_default_500</item>
@@ -74,6 +74,6 @@
     </style>
 
     <style name="Theme.Shop.BackgroundImageStyle">
-        <item name="android:windowBackground">@drawable/bg_image_start_page</item>
+        <item name="android:windowBackground">@color/black_dark_900</item>
     </style>
 </resources>
