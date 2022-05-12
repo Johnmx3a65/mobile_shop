@@ -1,10 +1,7 @@
 package com.parovsky.shop;
 
 import static com.parovsky.shop.utils.Utils.CURRENT_USER_EXTRA;
-import static com.parovsky.shop.utils.Utils.USER_ID_EXTRA;
 import static com.parovsky.shop.utils.Utils.showToast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,18 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.parovsky.shop.model.User;
 import com.parovsky.shop.utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.Serializable;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -92,9 +86,10 @@ public class LoginActivity extends AppCompatActivity {
                 SaveSharedPreference.setUserPassword(LoginActivity.this, password);
                 Intent homePageIntent = new Intent(LoginActivity.this, HomePageActivity.class);
                 try {
-                    JSONObject jsonObject = new JSONObject(new String(responseBody));
+                    JSONObject response = new JSONObject(new String(responseBody));
+                    response.remove("favoriteLocations");
                     Bundle bundle = new Bundle();
-                    bundle.putString(CURRENT_USER_EXTRA, jsonObject.toString());
+                    bundle.putString(CURRENT_USER_EXTRA, response.toString());
                     homePageIntent.putExtras(bundle);
                     startActivity(homePageIntent);
                 } catch (JSONException e) {
