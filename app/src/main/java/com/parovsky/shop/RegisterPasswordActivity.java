@@ -8,14 +8,14 @@ import static com.parovsky.shop.utils.Utils.isNotNull;
 import static com.parovsky.shop.utils.Utils.showToast;
 import static com.parovsky.shop.utils.Utils.validatePassword;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
@@ -119,6 +119,8 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                     showToast(RegisterPasswordActivity.this, "Невалидни потребителски данни");
                 }else if (statusCode == 404) {
                     showToast(RegisterPasswordActivity.this, "Страницата не е намерена");
+                }else if (statusCode == 409) {
+                    showToast(RegisterPasswordActivity.this, "Потребителят вече съществува");
                 }else if (statusCode == 500) {
                     showToast(RegisterPasswordActivity.this, "Сървърна грешка");
                 }else {

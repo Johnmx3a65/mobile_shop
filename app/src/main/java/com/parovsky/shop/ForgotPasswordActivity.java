@@ -5,14 +5,14 @@ import static com.parovsky.shop.utils.Utils.isNotNull;
 import static com.parovsky.shop.utils.Utils.showToast;
 import static com.parovsky.shop.utils.Utils.validateEmail;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
@@ -92,7 +92,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (statusCode == 401) {
                     showToast(ForgotPasswordActivity.this, "Невалидни потребителски данни");
                 }else if (statusCode == 404) {
-                    showToast(ForgotPasswordActivity.this, "Страницата не е намерена");
+                    showToast(ForgotPasswordActivity.this, "Потребителят не е намерен");
                 }else if (statusCode == 500) {
                     showToast(ForgotPasswordActivity.this, "Сървърна грешка");
                 }else {
