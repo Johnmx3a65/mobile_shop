@@ -28,6 +28,7 @@ import com.parovsky.shop.model.Category;
 import com.parovsky.shop.model.Location;
 import com.parovsky.shop.model.User;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -94,12 +95,7 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        setLocationRecycler(currentUser.getFavoriteLocations());
-
-        if (currentUser.getFavoriteLocations().isEmpty()) {
-            noContentImage.setVisibility(View.VISIBLE);
-            locationRecycler.setVisibility(View.GONE);
-        }
+        setLocationRecycler(new LinkedList<>());
 
         invokeWS();
     }
@@ -114,9 +110,10 @@ public class HomePageActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 progressDialog.hide();
                 List<Location> locations = new Gson().fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
-                setLocationRecycler(locations);
+                locationAdapter.setLocations(locations);
+                locationAdapter.notifyDataSetChanged();
 
-                if (locations == null || locations.isEmpty()) {
+                if (locations.isEmpty()) {
                     noContentImage.setVisibility(View.VISIBLE);
                     locationRecycler.setVisibility(View.GONE);
                 }else {
