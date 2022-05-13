@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Shop" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/brand_default_500</item>
+        <item name="colorPrimaryVariant">@color/brand_default_500</item>
+        <item name="colorOnPrimary">@color/black_white_0</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/brand_default_500</item>
+        <item name="colorSecondaryVariant">@color/brand_default_500</item>
+        <item name="colorOnSecondary">@color/black_white_0</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/black_white_0</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+</resources>
