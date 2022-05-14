@@ -22,6 +22,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.parovsky.shop.adapter.LocationAdapter;
 import com.parovsky.shop.model.Location;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,8 @@ public class SearchActivity extends AppCompatActivity {
     private ImageView backImage;
 
     private SearchView searchView;
+
+    public static final String SEARCH_TEXT_VIEW_VALUE = "Намерихме {0} резултата за: {1}";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class SearchActivity extends AppCompatActivity {
                 List<Location> filteredLocations = locations.stream().filter(location -> location.getName().toLowerCase().contains(s.toLowerCase())).collect(Collectors.toList());
                 locationAdapter.setLocations(filteredLocations);
                 locationAdapter.notifyDataSetChanged();
+                searchTextView.setText(MessageFormat.format(SEARCH_TEXT_VIEW_VALUE, filteredLocations.size(), s));
                 return false;
             }
         });
@@ -91,9 +95,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 progressDialog.hide();
                 List<Location> locations = new Gson().fromJson(new String(responseBody), new TypeToken<List<Location>>() {}.getType());
-                locations = locations.stream().filter(location -> location.getName().toLowerCase().contains(search.toLowerCase())).collect(Collectors.toList());
-                searchTextView.setText("Намерихме " + locations.size() + " резултата за: " + search);
-                setLocationRecycler(locations);
+                List<Location> filteredLocations = locations.stream().filter(location -> location.getName().toLowerCase().contains(search.toLowerCase())).collect(Collectors.toList());
+                searchTextView.setText(MessageFormat.format(SEARCH_TEXT_VIEW_VALUE, filteredLocations.size(), search));
+                setLocationRecycler(filteredLocations);
+                locationAdapter.setAllLocations(locations);
             }
 
             @Override

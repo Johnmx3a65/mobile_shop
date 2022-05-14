@@ -94,8 +94,7 @@ public class RegisterPasswordActivity extends AppCompatActivity {
         newUser.put("mail", email);
         newUser.put("password", newPassword);
         newUser.put("role", "USER");
-        StringEntity entity = new StringEntity(newUser.toString());
-
+        StringEntity entity = new StringEntity(newUser.toString(), "UTF-8");
         progressDialog.show();
 
         AsyncHttpClient client = new AsyncHttpClient();

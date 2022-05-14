@@ -30,14 +30,13 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     private final Context context;
 
-    private final List<Location> allLocations;
+    private List<Location> allLocations;
 
     private List<Location> locations;
 
     public LocationAdapter(Context context, List<Location> locations) {
         this.context = context;
         this.locations = locations;
-        this.allLocations = locations;
     }
 
     public List<Location> getLocations() {
@@ -50,6 +49,10 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     public List<Location> getAllLocations() {
         return allLocations;
+    }
+
+    public void setAllLocations(List<Location> allLocations) {
+        this.allLocations = allLocations;
     }
 
     @NonNull
