@@ -21,10 +21,11 @@ tools:context=".HomePageActivity">
             <TextView
                 android:id="@+id/homePageGreetingTextView"
                 style="@style/headline_300"
-                android:layout_width="wrap_content"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                android:maxLines="1"
                 android:text="@string/HelloUser"
                 android:textColor="@color/black_dark_900"
                 android:textSize="16sp"
@@ -97,8 +98,10 @@ tools:context=".HomePageActivity">
                 android:layout_width="match_parent"
                 android:layout_height="246dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
                 android:clipToPadding="false"
                 android:paddingStart="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
