@@ -28,6 +28,7 @@ import com.parovsky.shop.model.Category;
 import com.parovsky.shop.model.Location;
 import com.parovsky.shop.model.User;
 
+import java.text.MessageFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,6 +54,8 @@ public class HomePageActivity extends AppCompatActivity {
 
     private ImageView noContentImage;
 
+    public static final String GREETING_TEXT = "Здравейте, {0}!";
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -76,7 +79,7 @@ public class HomePageActivity extends AppCompatActivity {
         noContentImage = findViewById(R.id.noContentImage);
 
         greetingText = findViewById(R.id.homePageGreetingTextView);
-        greetingText.setText("Здравейте, " + currentUser.getName() + "!");
+        greetingText.setText(MessageFormat.format(GREETING_TEXT, currentUser.getName()));
 
         searchView = findViewById(R.id.homeSearchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

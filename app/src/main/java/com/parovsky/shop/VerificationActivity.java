@@ -38,9 +38,15 @@ public class VerificationActivity extends AppCompatActivity {
 
     private ImageView backBtn;
 
+    private CountDownTimer countDownTimer;
+
+    private boolean isCounterRunning  = false;
+
     // 4 minutes
     private static final long COUNTDOWN_TIME = 4 * 60 * 1000;
+
     private TextView countDownText;
+
     private long timeLeft = COUNTDOWN_TIME;
 
     @Override
@@ -60,11 +66,12 @@ public class VerificationActivity extends AppCompatActivity {
         saveBtn = findViewById(R.id.verificationSaveBtn);
         saveBtn.setOnClickListener(this::saveBtnOnClick);
 
-        timerStart();
+        countDownTimer = getCountDownTimer();
+        countDownTimer.start();
     }
 
-    private void timerStart() {
-        CountDownTimer countDownTimer = new CountDownTimer(COUNTDOWN_TIME, 1000) {
+    private CountDownTimer getCountDownTimer() {
+        return new CountDownTimer(COUNTDOWN_TIME, 1000) {
             @Override
             public void onTick(long l) {
                 timeLeft = l;
@@ -74,6 +81,7 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 try {
+                    isCounterRunning = false;
                     sendVerificationCode();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -81,9 +89,8 @@ public class VerificationActivity extends AppCompatActivity {
                     e.printStackTrace();
                     showToast(VerificationActivity.this, "Неочаквана грешка! Проверете дали сте вързани към мрежата интернет");
                 }
-                timeLeft = COUNTDOWN_TIME;
             }
-        }.start();
+        };
     }
 
     private void updateTimer() {
@@ -105,6 +112,13 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 showToast(VerificationActivity.this, "Изпратено е ново писмо за потвърждение");
+                if( !isCounterRunning ){
+                    isCounterRunning = true;
+                }
+                else{
+                    countDownTimer.cancel();
+                }
+                countDownTimer.start();
             }
 
             @Override
@@ -152,6 +166,7 @@ public class VerificationActivity extends AppCompatActivity {
                 prgDialog.hide();
                 String parent = getIntent().getStringExtra(PARENT_EXTRA);
                 if (parent != null && parent.equals("RegisterPasswordActivity")) {
+                    countDownTimer.cancel();
                     startActivity(new Intent(VerificationActivity.this, LoginActivity.class));
                 }else {
                     Bundle extras = new Bundle();
@@ -159,6 +174,7 @@ public class VerificationActivity extends AppCompatActivity {
                     extras.putString(VERIFY_CODE_EXTRA, pinView.getText().toString());
                     Intent intent = new Intent(VerificationActivity.this, NewPasswordActivity.class);
                     intent.putExtras(extras);
+                    countDownTimer.cancel();
                     startActivity(intent);
                 }
             }
